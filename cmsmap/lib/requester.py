@@ -87,7 +87,7 @@ class NoRedirects(urllib.request.HTTPRedirectHandler):
     # Redirect handler that simply raises a Redirect() for all http_error_30*() methods
     def redirect_request(self, req, fp, code, msg, headers, newurl):
         RedirError = urllib.request.HTTPError(req.get_full_url(), code, msg, headers, fp)
-        RedirError.status = code
+        RedirError.code = code
         raise RedirError
 
 requester = Requester()
